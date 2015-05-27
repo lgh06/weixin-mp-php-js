@@ -1,0 +1,35 @@
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta name="viewport" content="width=device-width , initial-scale=1.0, minimum-scale=0.5, maximum-scale=1.5,user-scalable=yes">
+        <meta name="keywords" content="滴答清单,嘀嗒清单,dida365,dida,todo,to do,task,tasks,时间管理,GTD,待办事项,提醒,note,notes,android,app,笔记,清单,安卓,iPhone,iOS,应用">
+        <meta name="description" content="滴答清单，一个帮你高效完成任务和规划时间的应用，是一款拥有跨设备云同步、周期提醒、清单管理、清晰分类、协作和集成日历的应用，你可以在Web、Android、iPhone等设备上使用它。">
+        <meta name="author" content="滴答清单">
+        <meta name="robots" content="index,follow">
+        <meta property="qc:admins" content="24614436777641413656375" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="滴答清单">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-itunes-app" content="app-id=626144601">
+        <link rel="shortcut icon" href="//s3.cn-north-1.amazonaws.com.cn/dida-web-static/static/img/favicon.ico">
+        <link rel="apple-touch-icon" sizes="72x72" href="//s3.cn-north-1.amazonaws.com.cn/dida-web-static/static/img/touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="//s3.cn-north-1.amazonaws.com.cn/dida-web-static/static/img/touch-icon-iphone-retina.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="//s3.cn-north-1.amazonaws.com.cn/dida-web-static/static/img/touch-icon-ipad-retina.png" />
+        <link rel="apple-touch-icon" href="//s3.cn-north-1.amazonaws.com.cn/dida-web-static/static/img/touch-icon-iphone.png" />
+        <!-- Android Lollipop -->
+        <meta name="theme-color" content="#5f7fb0">
+        <!-- win8 -->
+        <meta name="msapplication-TileColor" content="#5f7fb0"/>
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- old mobile -->
+        <meta name="HandheldFriendly" content="true">
+        <meta name="MobileOptimized" content="320">
+        <!-- uc -->
+        <meta name="screen-orientation" content="portrait">
+        <meta name="full-screen" content="yes">
+        <meta name="browsermode" content="application">
+        <!-- QQ -->
+        <meta name="x5-orientation" content="portrait">
+        <meta name="x5-fullscreen" content="true">
+        <meta name="x5-page-mode" content="app">
