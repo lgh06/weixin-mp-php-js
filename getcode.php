@@ -43,7 +43,16 @@ require_once dirname(__FILE__).'/common/base.php';
                 timestamp: '<?php echo $time; ?>', // 必填，生成签名的时间戳
                 nonceStr: '<?php echo $nonceStr; ?>', // 必填，生成签名的随机串
                 signature: '<?php echo sha1($signature); ?>',// 必填，签名，见附录1
-                jsApiList: ["openLocation","getLocation","showOptionMenu"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                jsApiList: ["openLocation",
+                    "getLocation",
+                    "showOptionMenu",
+                    "startRecord",//开始录音
+                    "stopRecord",//停止录音
+                    "onVoiceRecordEnd",//自动停止长时间录音
+                    "playVoice",
+                    "pauseVoice",
+                    "stopVoice"
+                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
             jQuery(function(){
                 var latitude = 0,longitude = 0;
@@ -60,12 +69,21 @@ require_once dirname(__FILE__).'/common/base.php';
                         }
                     });
                     wx.checkJsApi({
-                        jsApiList: ["openLocation","getLocation","showOptionMenu"], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                        jsApiList: ["openLocation",
+                            "getLocation",
+                            "showOptionMenu",
+                            "startRecord",//开始录音
+                            "stopRecord",//停止录音
+                            "onVoiceRecordEnd",//自动停止长时间录音
+                            "playVoice",
+                            "pauseVoice",
+                            "stopVoice"
+                        ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
                         success: function(res) {
                            console.log("2222"+res);
                         }
                     });
-                    window.onclick = function(){
+/*                    window.onclick = function(){
                         wx.openLocation({
                             latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
                             longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
@@ -74,7 +92,14 @@ require_once dirname(__FILE__).'/common/base.php';
                             scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
                             infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
                         });
-                    }
+                    }*/
+
+                    wx.onVoiceRecordEnd({
+                        // 录音时间超过一分钟没有停止的时候会执行 complete 回调
+                        complete: function (res) {
+                            var localId = res.localId;
+                        }
+                    });
 
                 });
 
@@ -122,7 +147,65 @@ $userInfo = https_request($userInfoUrl);
 var_dump($userInfo);
 ?>
 
+    <button id="startRecord">开始</button>
+    <button id="stopRecord">停止</button>
+    <br/>
+    <button id="playVoice">播放</button>
+    <button id="pauseVoice">暂停</button>
+    <button id="stopVoice">停止</button>
+<script>
+    var currMediaId = "";
+    jQuery(document).ready(
 
+        function ($) {
+
+            $("#startRecord").click(function () {
+                wx.startRecord();
+
+
+            });
+            $("#stopRecord").click(function () {
+                wx.stopRecord({
+                    success: function (res) {
+                        currMediaId = res.localId;
+                    }
+                });
+            });
+            $("#playVoice").click(function () {
+                wx.playVoice({
+                    localId: currMediaId // 需要播放的音频的本地ID，由stopRecord接口获得
+                });
+            });
+
+            $("#pauseVoice").click(function () {
+                wx.pauseVoice({
+                    localId: currMediaId // 需要播放的音频的本地ID，由stopRecord接口获得
+                });
+            });
+
+            $("#stopVoice").click(function () {
+                wx.stopVoice({
+                    localId: currMediaId // 需要播放的音频的本地ID，由stopRecord接口获得
+                });
+            });
+
+            function hasGetUserMedia() {
+                //请注意:在Opera浏览器中不使用前缀
+                return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia || navigator.msGetUserMedia);
+            }
+            if (hasGetUserMedia()) {
+                alert('您的浏览器支持getUserMedia方法');
+            }
+            else {
+                alert('您的浏览器不支持getUserMedia方法');
+            }
+
+
+
+        }
+    );
+</script>
     </body>
 </html>
 
